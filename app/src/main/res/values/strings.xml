@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FirebaseChatDemo</string>
+    <string name="register_btn_txt">Register ?</string>
+    <string name="username_string">Username</string>
+    <string name="email_string">Email</string>
+    <string name="input_empty_error">this field is empty</string>
+    <string name="input_short_pass_error">Password must be more than 8 characters</string>
+    <string name="logout_menu">Logout</string>
+    <string name="settings_btn">Account Settings</string>
+    <string name="all_users">All Users</string>
+    <string name="new_account_txt">Create a new Account</string>
+    <string name="create_account_btn">Create Account</string>
+    <string name="already_have_account">Already have Account</string>
+    <string name="login">Login</string>
+    <string name="login_txt">Login To Your Account</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="hello_request_fragment">Hello Request fragment</string>
+    <string name="hello_chats_fragment">Hello Chats Fragment</string>
+    <string name="hello_friends_fragments">Hello Friends Fragments</string>
+    <string name="display_name">Display Name</string>
+    <string name="status_string">Hi There, Iam using Firebase Demo!</string>
+    <string name="change_image">change image</string>
+    <string name="change_status">change status</string>
+    <string name="save_status">save status</string>
+    <string name="your_status_hint">Your Status</string>
+</resources>
