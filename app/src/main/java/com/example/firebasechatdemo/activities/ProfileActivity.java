@@ -46,7 +46,6 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference mUserDatabase;
     private DatabaseReference mFriendReqDatabase;
     private DatabaseReference mFriendDatabase;
-    private DatabaseReference mNotificationDatabase;
     private DatabaseReference mRootRef;
     private FirebaseUser mCurrentUser;
     private String mCurrentState;
@@ -62,7 +61,6 @@ public class ProfileActivity extends AppCompatActivity {
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uId);
         mFriendReqDatabase = FirebaseDatabase.getInstance().getReference().child("Friend_req");
         mFriendDatabase = FirebaseDatabase.getInstance().getReference().child("Friends");
-        mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mCurrentState = "not_friends";
         showLoading();

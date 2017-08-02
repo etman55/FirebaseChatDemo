@@ -8,14 +8,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.firebasechatdemo.R;
-import com.example.firebasechatdemo.utils.PicassoCache;
 import com.example.firebasechatdemo.models.User;
+import com.example.firebasechatdemo.utils.PicassoCache;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
     @Bind(R.id.user_list)
     RecyclerView mUserList;
     private DatabaseReference mUserDatabase;
-    private FirebaseUser mCurrentUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,6 @@ public class UserActivity extends AppCompatActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mUserList.setHasFixedSize(true);
         mUserList.setLayoutManager(new LinearLayoutManager(this));
@@ -85,10 +83,13 @@ public class UserActivity extends AppCompatActivity {
         TextView mDisplayName;
         @Bind(R.id.user_status_txt)
         TextView mStatus;
+        @Bind(R.id.user_status_img)
+        ImageView onlineStatus;
 
         public MyUserViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            onlineStatus.setVisibility(View.INVISIBLE);
         }
 
         public void setName(String name) {

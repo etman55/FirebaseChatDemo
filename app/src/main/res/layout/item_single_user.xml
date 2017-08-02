@@ -40,12 +40,12 @@
 
     <ImageView
         android:id="@+id/user_status_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignTop="@+id/user_name_txt"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/user_name_txt"
         android:layout_toRightOf="@+id/user_name_txt"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_online" />
 </RelativeLayout>

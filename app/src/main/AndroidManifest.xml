@@ -18,8 +18,10 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher_round" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
@@ -66,24 +68,24 @@
             android:parentActivityName="com.example.firebasechatdemo.activities.UserActivity">
             <intent-filter>
                 <action android:name="com.example.android.firebasechatdemo_TARGET_ACTION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
 
         <service android:name="com.example.firebasechatdemo.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name="com.example.firebasechatdemo.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-
+        <activity android:name="com.example.firebasechatdemo.activities.ChatActivity"
+            android:parentActivityName="com.example.firebasechatdemo.activities.MainActivity"></activity>
     </application>
 
 </manifest>

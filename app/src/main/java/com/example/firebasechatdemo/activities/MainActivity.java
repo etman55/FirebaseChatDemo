@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("FireBase Demo");
-        mUserRef = FirebaseDatabase.getInstance().getReference()
-                .child("Users").child(mAuth.getCurrentUser().getUid());
+        if (mAuth.getCurrentUser() != null)
+            mUserRef = FirebaseDatabase.getInstance().getReference()
+                    .child("Users").child(mAuth.getCurrentUser().getUid());
         sectionsAdapter = new SectionsAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(sectionsAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -50,16 +52,19 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
+//            mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
             sendToStart();
         } else {
-            mUserRef.child("online").setValue(true);
+            mUserRef.child("online").setValue("true");
         }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mUserRef.child("online").setValue(false);
+        if (mAuth.getCurrentUser() != null) {
+            mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
+        }
     }
 
     @Override
@@ -74,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.main_logout_btn) {
             FirebaseAuth.getInstance().signOut();
+            if (mAuth.getCurrentUser() == null)
+                mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
             sendToStart();
         }
         if (item.getItemId() == R.id.main_settings_btn)
